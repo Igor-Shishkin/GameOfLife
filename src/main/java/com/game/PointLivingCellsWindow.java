@@ -16,9 +16,9 @@ public class PointLivingCellsWindow extends JFrame implements ActionListener {
     private int GRID_WIDTH = 50;
     private int GRID_HEUGHT = 37;
     private int CELL_SIZE = 15;
-    private final JPanel gridPanel = new JPanel(new GridLayout(GRID_HEUGHT, GRID_WIDTH, 1,1));
+    private JPanel gridPanel;
     private final JButton startButton = new JButton("START");
-    private boolean[][] booleanGrid;
+    private final boolean[][] booleanGrid;
     private final JPanel[][] cells;
     public PointLivingCellsWindow() throws HeadlessException {
 
@@ -80,6 +80,8 @@ public class PointLivingCellsWindow extends JFrame implements ActionListener {
     }
 
     private void fillGridWithCells() {
+        gridPanel = new JPanel(new GridLayout(GRID_HEUGHT, GRID_WIDTH, 1,1));
+
         final Color cellColor = new Color(0xB2FAF0);
         gridPanel.setBackground(Color.GRAY);
 

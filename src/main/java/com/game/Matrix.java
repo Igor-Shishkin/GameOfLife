@@ -11,27 +11,33 @@ public class Matrix {
 
         for (int i = 0; i < booleanGrid.length; i++) {
             for (int j = 0; j < booleanGrid[i].length; j++) {
+                System.out.print("i: " + i + ", j: " + j + ", count: ");
                 newBooleanGrid[i][j] = willCellLive(i,j);
             }
         }
         return newBooleanGrid;
     }
-    public boolean willCellLive(int x, int y) {
-        int i = countNeighbours(x, y);
-        return i == 3 || i == 2;
+    public boolean willCellLive(int row, int column) {
+        int i = countNeighbours(row, column);
+        System.out.println(", count: " + i);
+
+        if (booleanGrid[row][column] && (i==2 || i==3)) { return true; }
+        else if (!booleanGrid[row][column] && i==3) { return true; }
+        return false;
     }
-    public int countNeighbours(int x, int y) {
+    public int countNeighbours(int row, int column) {
         int counter = 0;
 
-        int startX = (x>0) ? x-1 : x;
-        int endX = (x+1 < booleanGrid.length) ? x+1 : x;
-        int startY = (y>0) ? y-1 : y;
-        int endY = (y+1 < booleanGrid[0].length) ? y+1 : y;
+        int startX = Math.max(0, column-1);
+        int endX = Math.min(column+1, booleanGrid.length-1);
+        int startY = Math.max(0, row-1);
+        int endY = Math.min(row+1, booleanGrid.length-1);
 
-        for (int j = startX; j <= endX; j++) {
-            for (int i = startY; i <= endY; i++) {
-                if  (j == x && i == y) { continue; }
-                if (booleanGrid[j][i]) { counter++; }
+        for (int j = startY; j <= endY; j++) {
+            for (int i = startX; i <= endX; i++) {
+                if  (j == row && i == column) { continue; }
+                if (booleanGrid[j][i]) {
+                    counter++; }
             }
         }
         return counter;
