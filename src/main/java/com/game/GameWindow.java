@@ -30,7 +30,6 @@ public class GameWindow extends JFrame implements ActionListener {
         this.setLayout(new GridBagLayout());
         cells = new JPanel[GRID_HEIGHT][GRID_WIDTH];
         booleanGrid = new boolean[GRID_HEIGHT][GRID_WIDTH];
-        Timer timer = new Timer();
 
         fillGridWithCells();
         setElementsProperties();
