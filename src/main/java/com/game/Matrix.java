@@ -11,7 +11,6 @@ public class Matrix {
 
         for (int i = 0; i < booleanGrid.length; i++) {
             for (int j = 0; j < booleanGrid[i].length; j++) {
-                System.out.print("i: " + i + ", j: " + j + ", count: ");
                 newBooleanGrid[i][j] = willCellLive(i,j);
             }
         }
@@ -19,8 +18,6 @@ public class Matrix {
     }
     public boolean willCellLive(int row, int column) {
         int i = countNeighbours(row, column);
-        System.out.println(", count: " + i);
-
         if (booleanGrid[row][column] && (i==2 || i==3)) { return true; }
         else if (!booleanGrid[row][column] && i==3) { return true; }
         return false;
@@ -29,7 +26,7 @@ public class Matrix {
         int counter = 0;
 
         int startX = Math.max(0, column-1);
-        int endX = Math.min(column+1, booleanGrid.length-1);
+        int endX = Math.min(column+1, booleanGrid[0].length-1);
         int startY = Math.max(0, row-1);
         int endY = Math.min(row+1, booleanGrid.length-1);
 

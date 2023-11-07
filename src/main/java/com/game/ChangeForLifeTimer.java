@@ -16,6 +16,7 @@ public class ChangeForLifeTimer extends TimerTask {
 
     @Override
     public void run() {
+        long start = System.currentTimeMillis();
         Matrix matrix = new Matrix(booleanGrid);
         boolean[][] tempBooleanGrid = matrix.getNewBooleanGrid();
 
@@ -26,5 +27,7 @@ public class ChangeForLifeTimer extends TimerTask {
                 cells[row][column].setBackground(colorForCell);
             }
         }
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
     }
 }

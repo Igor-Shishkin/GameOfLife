@@ -132,7 +132,7 @@ public class PointLivingCellsWindow extends JFrame implements ActionListener {
         if (e.getSource() == startButton) {
 //            new GameWindow(booleanGrid, CELL_SIZE);
             Timer timer = new Timer();
-            timer.scheduleAtFixedRate(new ChangeForLifeTimer(cells, booleanGrid), 3000, 500);
+            timer.scheduleAtFixedRate(new ChangeForLifeTimer(cells, booleanGrid), 1000, 500);
 
 
         }
