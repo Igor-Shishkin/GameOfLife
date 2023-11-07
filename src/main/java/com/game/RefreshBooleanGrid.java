@@ -19,8 +19,7 @@ public class RefreshBooleanGrid {
     public boolean willCellLive(int row, int column) {
         int i = countNeighbours(row, column);
         if (booleanGrid[row][column] && (i==2 || i==3)) { return true; }
-        else if (!booleanGrid[row][column] && i==3) { return true; }
-        return false;
+        else return !booleanGrid[row][column] && i == 3;
     }
     public int countNeighbours(int row, int column) {
         int counter = 0;

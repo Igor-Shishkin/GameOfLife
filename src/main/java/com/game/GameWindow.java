@@ -14,7 +14,7 @@ import java.util.Timer;
 public class GameWindow extends JFrame implements ActionListener {
 
     private int GRID_WIDTH = 50;
-    private int GRID_HEUGHT = 37;
+    private int GRID_HEIGHT = 37;
     private int CELL_SIZE = 15;
     private int UPDATE_FREQUENCY = 450;
     private JPanel gridPanel;
@@ -28,8 +28,8 @@ public class GameWindow extends JFrame implements ActionListener {
         setGameProperties();
 
         this.setLayout(new GridBagLayout());
-        cells = new JPanel[GRID_HEUGHT][GRID_WIDTH];
-        booleanGrid = new boolean[GRID_HEUGHT][GRID_WIDTH];
+        cells = new JPanel[GRID_HEIGHT][GRID_WIDTH];
+        booleanGrid = new boolean[GRID_HEIGHT][GRID_WIDTH];
         Timer timer = new Timer();
 
         fillGridWithCells();
@@ -44,27 +44,15 @@ public class GameWindow extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
-//    private void setTimerForChanges() {
-//        Timer timer = new Timer();
-//        timer.scheduleAtFixedRate(new ChangeForLifeTimer(cells, booleanGrid), 3000, 200);
-//    }
-
     private void setObjectsIntoFrame() {
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.HORIZONTAL;
 
-//        c.gridy = 0;
-//        c.gridx = 0;
-//        c.weightx = 3;
         this.add(gridPanel, c);
 
         JPanel buttonPanel = new JPanel(new FlowLayout());
         buttonPanel.add(clearButton);
         buttonPanel.add(startButton);
-
-//        c.gridy = 1;
-//        c.weightx = 1;
-//        this.add(startButton, c);
 
         c.gridy = 1;
         this.add(buttonPanel, c);
@@ -89,23 +77,21 @@ public class GameWindow extends JFrame implements ActionListener {
         try (FileInputStream fis = new FileInputStream("src\\main\\resources\\config.properties")) {
             properties.load(fis);
             GRID_WIDTH = Integer.parseInt(properties.getProperty("grid.width"));
-            GRID_HEUGHT = Integer.parseInt(properties.getProperty("grid.height"));
+            GRID_HEIGHT = Integer.parseInt(properties.getProperty("grid.height"));
             CELL_SIZE = Integer.parseInt(properties.getProperty("cell.size"));
             UPDATE_FREQUENCY = Integer.parseInt(properties.getProperty("update.frequency"));
         } catch (IOException e) {
             System.err.println("Exception: " + e);
         }
-
-
     }
 
     private void fillGridWithCells() {
-        gridPanel = new JPanel(new GridLayout(GRID_HEUGHT, GRID_WIDTH, 1,1));
+        gridPanel = new JPanel(new GridLayout(GRID_HEIGHT, GRID_WIDTH, 1,1));
 
         final Color cellColor = new Color(0xB2FAF0);
         gridPanel.setBackground(Color.GRAY);
 
-        for (int row = 0; row < GRID_HEUGHT; row++) {
+        for (int row = 0; row < GRID_HEIGHT; row++) {
             for (int column = 0; column < GRID_WIDTH; column++) {
                 final JPanel cell = new JPanel();
                 cell.setPreferredSize(new Dimension(CELL_SIZE, CELL_SIZE));
@@ -118,34 +104,24 @@ public class GameWindow extends JFrame implements ActionListener {
                         cell.setBackground(Color.GREEN);
                         booleanGrid[finalRow][finalColumn] = !booleanGrid[finalRow][finalColumn];
                     }
-
                     @Override
                     public void mousePressed(MouseEvent e) {
-
                     }
-
                     @Override
                     public void mouseReleased(MouseEvent e) {
-
                     }
-
                     @Override
                     public void mouseEntered(MouseEvent e) {
-
                     }
-
                     @Override
                     public void mouseExited(MouseEvent e) {
-
                     }
-
                 });
                 cells[row][column] = cell;
                 gridPanel.add(cell);
             }
         }
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == startButton) {
@@ -157,7 +133,7 @@ public class GameWindow extends JFrame implements ActionListener {
                 timer.cancel();
             }
             final Color cellColor = new Color(0xB2FAF0);
-            for (int row = 0; row < GRID_HEUGHT; row++) {
+            for (int row = 0; row < GRID_HEIGHT; row++) {
                 for (int column = 0; column < GRID_WIDTH; column++) {
                     cells[row][column].setBackground(cellColor);
                     booleanGrid[row][column] = false;
