@@ -18,8 +18,10 @@ public class PointLivingCellsWindow extends JFrame implements ActionListener {
     private int CELL_SIZE = 15;
     private JPanel gridPanel;
     private final JButton startButton = new JButton("START");
+    private final JButton cleanButton = new JButton("CLEAN");
     private final boolean[][] booleanGrid;
     private final JPanel[][] cells;
+    private final Timer timer = new Timer();
     public PointLivingCellsWindow() throws HeadlessException {
 
         setGridAndCellSize();
@@ -33,7 +35,6 @@ public class PointLivingCellsWindow extends JFrame implements ActionListener {
         setElementsAppearance();
 
         setObjectsIntoFrame();
-//        setTimerForChanges();
 
         this.pack();
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -131,7 +132,7 @@ public class PointLivingCellsWindow extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == startButton) {
 //            new GameWindow(booleanGrid, CELL_SIZE);
-            Timer timer = new Timer();
+
             timer.scheduleAtFixedRate(new ChangeForLifeTimer(cells, booleanGrid), 1000, 500);
 
 

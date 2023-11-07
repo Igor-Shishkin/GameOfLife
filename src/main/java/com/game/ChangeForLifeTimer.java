@@ -2,7 +2,6 @@ package com.game;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
 import java.util.TimerTask;
 
 public class ChangeForLifeTimer extends TimerTask {
@@ -17,7 +16,7 @@ public class ChangeForLifeTimer extends TimerTask {
     @Override
     public void run() {
         long start = System.currentTimeMillis();
-        Matrix matrix = new Matrix(booleanGrid);
+        RefreshBooleanGrid matrix = new RefreshBooleanGrid(booleanGrid);
         boolean[][] tempBooleanGrid = matrix.getNewBooleanGrid();
 
         for (int row = 0; row < cells.length; row++) {

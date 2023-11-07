@@ -1,8 +1,8 @@
 package com.game;
 
-public class Matrix {
+public class RefreshBooleanGrid {
     private final boolean[][] booleanGrid;
-    public Matrix(boolean[][] booleanGrid) {
+    public RefreshBooleanGrid(boolean[][] booleanGrid) {
         this.booleanGrid = booleanGrid;
     }
 

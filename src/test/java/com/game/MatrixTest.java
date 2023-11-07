@@ -19,7 +19,7 @@ public class MatrixTest extends TestCase {
                 {false, false, false, false},
                 {false, false, false, false},
         };
-        Matrix matrix = new Matrix(testBooleanGrid);
+        RefreshBooleanGrid matrix = new RefreshBooleanGrid(testBooleanGrid);
 
         assertThat(matrix.getNewBooleanGrid()).isEqualTo(expectedBoolean);
     }
