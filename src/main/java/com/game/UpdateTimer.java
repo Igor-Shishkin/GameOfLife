@@ -4,18 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.TimerTask;
 
-public class ChangeForLifeTimer extends TimerTask {
+public class UpdateTimer extends TimerTask {
     private final JPanel[][] cells;
     private final boolean[][] booleanGrid;
 
-    public ChangeForLifeTimer(JPanel[][] cells, boolean[][] booleanGrid) {
+    public UpdateTimer(JPanel[][] cells, boolean[][] booleanGrid) {
         this.cells = cells;
         this.booleanGrid = booleanGrid;
     }
 
     @Override
     public void run() {
-        long start = System.currentTimeMillis();
         RefreshBooleanGrid matrix = new RefreshBooleanGrid(booleanGrid);
         boolean[][] tempBooleanGrid = matrix.getNewBooleanGrid();
 
@@ -26,7 +25,5 @@ public class ChangeForLifeTimer extends TimerTask {
                 cells[row][column].setBackground(colorForCell);
             }
         }
-        long end = System.currentTimeMillis();
-        System.out.println(end - start);
     }
 }
