@@ -1,4 +1,4 @@
-### The program helps to visualize the "game of life" algorithm.
+### The program helps to visualize the "Game of Life" algorithm.
 
 When you start the program, you can mark “live” cells in the field that appears. When you press the start button, observe the action of the algorithm.
 In the configuration file you can set values for field size and update frequency.
