@@ -12,3 +12,5 @@ The universe of the Game of Life is an infinite, two-dimensional orthogonal grid
  - Any live cell with two or three live neighbors lives on to the next generation.
  - Any live cell with more than three live neighbors dies, as if by overpopulation.
  - Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+
+#### Short video review here : https://youtu.be/FQ_VXmMoGQI
